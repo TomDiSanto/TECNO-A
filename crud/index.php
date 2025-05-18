@@ -22,7 +22,7 @@ $result = $connection->query("SELECT * FROM students");
  * Con echo mostramos por "pantalla" (navegador web)
  * el html al cliente.
  */
-echo "<!DOCTYPE html>";
+/**echo "<!DOCTYPE html>";
 echo "<html lang='es'>";
 echo "<head>";
 echo "<meta charset='UTF-8'>";
@@ -53,4 +53,35 @@ if ($result->num_rows > 0) {
 }
 echo "</body>";
 echo "</html>";
+*/
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+</head>
+<body>
+    <h2>Listado de estudiantes</h2>
+    <a href="insert.php" class="insert">Agregar Nuevo</a>
+    <?php if ($result->num_rows > 0) {
+    echo "<table border='1' cellpadding='10'>";
+    echo "<tr><th>Nombre</th><th>Email</th><th>Edad</th><th>Acciones</th></tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>{$row['fullname']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['age']}</td>
+                <td>
+                    <a href='update.php?id={$row['id']}'>Editar</a> |
+                    <a href='delete.php?id={$row['id']}'>Borrar</a>
+                </td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No hay estudiantes cargados.";
+}?>
+    
+</body>
+</html>

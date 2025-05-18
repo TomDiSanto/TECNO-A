@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
+<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
 <h2>Agregar Estudiante</h2>
 <form action="insert.php" method="post">
     Nombre completo: <input type="text" name="fullname" required><br>

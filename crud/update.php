@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Editar Estudiante</h2>
 <!--<form method="post">--> <!--NO SE HACE si no especifo action, usa la url actual con el id por GET-->
-
+<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
 <!-- En el action se agrega el id de la fila que estoy editando--> 
 <form action="update.php?id=<?= $row['id'] ?>" method="post">
     Nombre completo: <input type="text" name="fullname" value="<?= $row['fullname'] ?>" required><br>
